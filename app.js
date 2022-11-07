@@ -2,19 +2,19 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import helmet from 'helmet';
-import { env } from './src/config/config.js';
-import { hello, api } from './src/api/routes/hello.js';
-import { mail } from './src/api/routes/mail.js';
+import { env } from './config/config.js';
+import mailRouter from './src/api/routes/mail.js';
+import signUpRouter from './src/api/routes/signup.js';
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
+app.use(helmet());
+app.use(morgan('dev'));
 
-app.get('/api/:appid/:version/:schemas/:idcmd', api);
-app.get('/', hello);
-app.get('/mail', mail);
-
-console.log(env.PORT);
+app.use('/signup', signUpRouter);
+app.use('/mail', mailRouter);
 
 export const server = app.listen(env.PORT, () => {
   console.log(`Social Book Mark Server listening on port ${env.PORT}`);

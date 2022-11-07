@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import { senderInfo } from '../config/config.js';
+import { senderInfo } from '../../config/config.js';
 
 export default {
   sendGmail: (params) => {

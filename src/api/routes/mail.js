@@ -1,6 +1,9 @@
 import mailer from '../../utils/mailer.js';
+import express from 'express';
 
-export function mail(req, res) {
+const router = express.Router();
+
+router.get('/', (req, res) => {
   const { email } = req.body;
 
   let emailParams = {
@@ -12,4 +15,6 @@ export function mail(req, res) {
   mailer.sendGmail(emailParams);
 
   res.status(200).send('성공');
-}
+});
+
+export default router;

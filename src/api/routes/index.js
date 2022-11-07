@@ -1,1 +1,0 @@
-// .../api/:appid/:version/:schemass
