@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.reg__format {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.title {
+  font-size: 25px;
+  font-weight: 900;
+  margin-bottom: 10px;
+}
+
+.content {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+.reg__btn {
+  border-radius: 9px;
+  padding: 15px;
+  text-decoration: none;
+  color: white;
+  background-color: black;
+}

@@ -25,6 +25,11 @@ export default class followbook extends Model {
         model: 'book',
         key: 'id'
       }
+    },
+    createdat: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
     }
   }, {
     sequelize,

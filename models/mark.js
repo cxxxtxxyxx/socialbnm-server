@@ -11,19 +11,19 @@ export default class mark extends Model {
       primaryKey: true
     },
     link: {
-      type: DataTypes.STRING(200),
+      type: DataTypes.STRING(512),
       allowNull: false
     },
-    ogtitle: {
-      type: DataTypes.STRING(45),
+    title: {
+      type: DataTypes.STRING(255),
       allowNull: false
     },
-    ogdesc: {
-      type: DataTypes.STRING(45),
-      allowNull: false
+    desc: {
+      type: DataTypes.STRING(512),
+      allowNull: true
     },
-    ogimg: {
-      type: DataTypes.STRING(45),
+    imglink: {
+      type: DataTypes.STRING(512),
       allowNull: true
     },
     isdel: {

@@ -11,13 +11,18 @@ export default class book extends Model {
       primaryKey: true
     },
     title: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(255),
       allowNull: false
+    },
+    isonce: {
+      type: DataTypes.TINYINT,
+      allowNull: false,
+      defaultValue: 0
     },
     ispublic: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: true
+      defaultValue: false
     },
     isdel: {
       type: DataTypes.BOOLEAN,

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./mailBody.css" />
+  </head>
+  <body>
+    <div class="reg__format">
+      <h3 class="title">${username}님 반갑습니다.</h3>
+      <div class="content">가입 승인 버튼을 눌러주세요</div>
+      <p>
+        <a class="reg__btn" href="${host}/auth?token=${token}">승인하기</a>
+      </p>
+    </div>
+  </body>
+</html>

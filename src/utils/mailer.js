@@ -1,28 +1,24 @@
 import nodemailer from 'nodemailer';
-import { senderInfo } from '../../config/config.js';
+import { senderInfo, mailFormat, mailRegister } from '../../config/config.js';
 
 export default {
-  sendGmail: (params) => {
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      port: 587,
-      host: 'smtp.gmail.com',
-      secure: false,
-      requireTLS: true,
-      auth: {
-        user: senderInfo.user,
-        pass: senderInfo.password,
-      },
+  sendGmail: (email, token, nickname) => {
+    const transporter = nodemailer.createTransport(mailFormat);
+
+    const mailOptions = (nickname, token) => ({
+      from: `${senderInfo.user}`,
+      to: email,
+      subject: '✨Social Book & Mark 인증 메일입니다!✨',
+      html: mailRegister(nickname, token, 'http://localhost:8080'),
+      // attachments: [
+      //   {
+      //     filename: 'mailBody.html',
+      //     path: new URL('mailBody.html', import.meta.url).pathname,
+      //   },
+      // ],
     });
 
-    const mailOptions = {
-      from: senderInfo.user,
-      to: params.toEmail,
-      subject: params.subject,
-      text: params.text,
-    };
-
-    transporter.sendMail(mailOptions, (err, info) => {
+    transporter.sendMail(mailOptions(nickname, token), (err, info) => {
       if (err) {
         console.log(err);
       } else {

@@ -11,7 +11,7 @@ export default class user extends Model {
       primaryKey: true
     },
     email: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(255),
       allowNull: false,
       unique: "email_UNIQUE"
     },
@@ -25,7 +25,7 @@ export default class user extends Model {
       unique: "nickname_UNIQUE"
     },
     profileimg: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.INTEGER,
       allowNull: true
     },
     ispublic: {
@@ -33,15 +33,20 @@ export default class user extends Model {
       allowNull: false,
       defaultValue: true
     },
-    isdel: {
-      type: DataTypes.BOOLEAN,
-      allowNull: false,
-      defaultValue: false
+    outdate: {
+      type: DataTypes.STRING(10),
+      allowNull: true
     },
     createdat: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: Sequelize.Sequelize.literal('CURRENT_TIMESTAMP')
+    },
+    isvalid: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true,
+      defaultValue: false,
+      comment: "null이면 승인 대기중"
     }
   }, {
     sequelize,
