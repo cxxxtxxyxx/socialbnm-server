@@ -14,4 +14,4 @@ const sequelize = new Sequelize(
 
 const db = initModels(sequelize);
 
-export default db;
+export default { ...db };

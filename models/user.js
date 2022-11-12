@@ -1,7 +1,7 @@
 import _sequelize from 'sequelize';
 const { Model, Sequelize } = _sequelize;
 
-export default class user extends Model {
+export default class User extends Model {
   static init(sequelize, DataTypes) {
   return super.init({
     id: {
@@ -16,7 +16,7 @@ export default class user extends Model {
       unique: "email_UNIQUE"
     },
     password: {
-      type: DataTypes.STRING(45),
+      type: DataTypes.STRING(500),
       allowNull: false
     },
     nickname: {

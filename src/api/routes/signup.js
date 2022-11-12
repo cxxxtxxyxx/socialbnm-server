@@ -2,7 +2,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { v4 as uuidv4 } from 'uuid';
 import jwt from 'jsonwebtoken';
-import user from '../../../models/user.js';
+import Model from '../../../models/index.js';
 import {
   emailValidator,
   nicknameValidator,
@@ -10,7 +10,7 @@ import {
 } from '../../middlewares/validators/signup.js';
 import mailer from '../../utils/mailer.js';
 import { token } from '../../../config/config.js';
-
+const { User } = Model;
 const router = express.Router();
 
 router.post(
@@ -21,9 +21,9 @@ router.post(
   async (req, res, next) => {
     const { email, password, nickname } = req.body;
     console.log(email, password);
-    const hashPassword = await bcrypt.hash(password, 10);
+    const hashPassword = await bcrypt.hash(password, parseInt(10));
 
-    const newUser = await user.create({
+    const newUser = await User.create({
       email,
       password: hashPassword,
       nickname,
