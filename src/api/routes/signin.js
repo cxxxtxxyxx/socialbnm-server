@@ -13,7 +13,6 @@ router.post('/', async (req, res, next) => {
   if (!user) {
     return res.status(404).json({ message: '입력 정보를 확인하세요' });
   }
-  console.log(user);
 
   const isValidPasswd = await bcrypt.compare(
     password,

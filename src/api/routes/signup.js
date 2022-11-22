@@ -20,7 +20,6 @@ router.post(
   nicknameValidator,
   async (req, res, next) => {
     const { email, password, nickname } = req.body;
-    console.log(email, password);
     const hashPassword = await bcrypt.hash(password, parseInt(10));
 
     const newUser = await User.create({
